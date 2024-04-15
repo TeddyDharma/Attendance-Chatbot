@@ -2,7 +2,7 @@
   [
     {
       "tag":"greeting",
-      "input":["hai", "hello", "hai", "selamat pagi", "selamat siang", "selamat sore",  "selamat malam", "oagi", "siang", "sore", "malam"],
+      "input":["hai", "hello", "hai", "selamat pagi", "selamat siang", "selamat sore",  "selamat malam", "pagi", "siang", "sore", "malam"],
       "responses":[
           "Hi, dengan Dharma disini, ada yang bisa saya bantu?",
           "Halo, ada yang bisa saya bantu?",
