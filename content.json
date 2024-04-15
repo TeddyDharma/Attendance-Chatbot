@@ -1,0 +1,58 @@
+{"intents":
+  [
+    {
+      "tag":"greeting",
+      "input":["hai", "hello", "hai", "selamat pagi", "selamat siang", "selamat sore",  "selamat malam", "oagi", "siang", "sore", "malam"],
+      "responses":[
+          "Hi, dengan Dharma disini, ada yang bisa saya bantu?",
+          "Halo, ada yang bisa saya bantu?",
+          "Senang bercakap dengan anda, apaakah ada yang bisa saya bantu?",
+          "Hello, nice to meet you, saya dharma bagaimana keadaan anda?",
+          "Selamat datang di dharma chat, temapat dimana anda bisa melakukan absensi dengan cepat dan praktis"
+          
+        ]
+    },
+    {
+      "tag":"goodbye",
+      "input":["Thank you","Thanks","Thanks for the info","bye","bye bro","okay bye","goodbye", "terima kasih", "terima kasih banyak", "puas dengan layanan anda", "baik hanya itu", "kerja bagus", "good job"],
+      "responses":[
+          "Terima kasih kembali 😁 !", 
+          "jangan lupa isi feedbacknya ya",
+          "senang bisa membantu permasalahan anda", 
+          "terima kasih sudah menggunakan layan ini 🤝", 
+          "sama sama"
+        ]
+    },
+    {
+      "tag":"sakit",
+      "input":["hari ini saya sakit jadi saya tidak ke kantor", "saya dalam kondisi yang tidak sehat hari ini", "saya absen sakit, bisakah anda membantu saya", "saya tidak hadir ke kantor karena sakit", "maaf, saya sakit hari ini", "maaf, saat ini saya sedang tidak enak badan", "saya tidak hadir hari ini, bisakah anda mencatat absensi saya", "apakah anda bisa membantu saya dengan mencatatakan saya sakit di buku absen"],
+      "responses":[
+          "Baik respon anda sudah kami catat semoga anda lekas sembuh 🤗",
+          "Terima kasih sudah mengabari, semoga anda bisa kenbali bekerja normal 🙂",
+          "Wah sayang sekali, baiklah permintaan anda segera kami proses 😇",
+          "Hai lagi hehe, baiklah kalau begitu respon anda sudah kami catat"
+        ]
+    },
+    {
+      "tag":"izin",
+    "input":["saya ada kepentingan lain hari ini", "saya tidak bisa ke kantor karena izin", "saya izin hari ini", "tolong berikan saya absen izin","saya ada urusan lain", "saya tidak hadir karena ada urusan penting", "apakah anda bisa mencatatakan saya izin di buku absen"],
+      "responses":[
+          "Hai terima kasih sudah menghubungi kami, kami akan memmproses absen izin anda 😁",
+          "Baik, kami akan penuhi permintaan anda",
+          "Baiklah, kami akan segera mencatatkannya di buku absen",
+          "Hi, respon anda akan kami proses",
+          "Terima  kasih sudah menghubungi kami, izin anda sudah  kami terima"
+        ]
+    },
+    {
+      "tag":"general",
+    "input":["siapa anda","apa yang anda bisa tawarkan","kenapa anda dibuat","fitur apa saja yang ada","anda bisa membantu apa", "anda itu apa"],
+      "responses":[
+          "Hello, saya dharma bot dan saya bertugas sebagai pencatat absenssi otomatis",
+          "Hello, saya dharma bot, saya bisa membantu anda dalam absensi tanpa perlu repot memberi tahu atasan",
+          "Hola, saya dharma bot saya adalah bot AI yang dibuat dengan deep learning dengan fitur utama  pencatat absenssi otomatis"
+        ]
+    }
+    
+  ]
+}
