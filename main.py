@@ -39,7 +39,7 @@ def predict_class(text: str, tokenizer, model):
     pred = model.predict(text_tokeneize)
     return np.argmax(pred)
 
-# nex to do : read dataset pegawai
+# nex to do : read dataset pegawai (connect to mysql)
 model, tokenizer = load_model_and_tokenizer("./bot_model.h5")
 pred = predict_class("saya sakit", tokenizer, model)
 print(pred)
