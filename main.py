@@ -1,5 +1,5 @@
 # containing all funnction chatboot needed
-import tensorflow as tf
+import tensorflow as tf 
 from tensorflow.keras.utils import pad_sequences
 import pickle
 import re
@@ -40,6 +40,3 @@ def predict_class(text: str, tokenizer, model):
     return np.argmax(pred)
 
 # nex to do : read dataset pegawai (connect to mysql)
-model, tokenizer = load_model_and_tokenizer("./bot_model.h5")
-pred = predict_class("saya sakit", tokenizer, model)
-print(pred)

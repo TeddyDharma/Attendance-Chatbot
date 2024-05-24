@@ -1,31 +1,11 @@
 # documentation : https://blog.streamlit.io/how-to-build-an-llm-powered-chatbot-with-streamlit/
 import streamlit as st
-from hugchat import hugchat
-from hugchat.login import Login
-
+from main import * 
 # App title
-st.set_page_config(page_title="🤗💬 HugChat")
-
-# Hugging Face Credentials
-# with st.sidebar:
-#     st.title('🤗💬 HugChat')
-#     if ('EMAIL' in st.secrets) and ('PASS' in st.secrets):
-#         st.success('HuggingFace Login credentials already provided!', icon='✅')
-#         hf_email = st.secrets['EMAIL']
-#         hf_pass = st.secrets['PASS']
-#     else:
-#         hf_email = st.text_input('Enter E-mail:', type='password')
-#         hf_pass = st.text_input('Enter password:', type='password')
-#         if not (hf_email and hf_pass):
-#             st.warning('Please enter your credentials!', icon='⚠️')
-#         else:
-#             st.success('Proceed to entering your prompt message!', icon='👉')
-#     st.markdown('📖 Learn how to build this app in this [blog](https://blog.streamlit.io/how-to-build-an-llm-powered-chatbot-with-streamlit/)!')
-    
-# Store LLM generated responses
+st.set_page_config(page_title="🤗💬 Sanata Chat")
 
 if "messages" not in st.session_state.keys():
-    st.session_state.messages = [{"role": "assistant", "content": "How may I help you?"}]
+    st.session_state.messages = [{"role": "assistant", "content": "Hai selamat datang di Sanata Chat"}]
 
 # Display chat messages
 for message in st.session_state.messages:
@@ -33,16 +13,15 @@ for message in st.session_state.messages:
         st.write(message["content"])
 
 # Function for generating LLM response
-def generate_response(prompt_input, email, passwd):
-    # Hugging Face Login
-    sign = Login(email, passwd)
-    cookies = sign.login()
-    # Create ChatBot                        
-    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-    return chatbot.chat(prompt_input)
+def generate_response(prompt_input):
+    #
+    model, tokenizer = load_model_and_tokenizer("./bot_model.h5")
+    pred = predict_class(str(prompt_input), tokenizer, model)
+
+    return pred
 
 # User-provided prompt
-if prompt := st.chat_input():
+if prompt := st.chat_input("ketik pesan mu disini ya!"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.write(prompt)
@@ -51,7 +30,7 @@ if prompt := st.chat_input():
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response = generate_response(prompt, hf_email, hf_pass) 
+            response = generate_response(prompt) 
             st.write(response) 
     message = {"role": "assistant", "content": response}
     st.session_state.messages.append(message)
