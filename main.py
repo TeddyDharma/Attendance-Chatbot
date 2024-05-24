@@ -5,7 +5,7 @@ import pickle
 import re
 import numpy as np
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
-
+import json
 
 def load_model_and_tokenizer(path: str): 
     # load tokenizer
@@ -16,7 +16,12 @@ def load_model_and_tokenizer(path: str):
     # return model and tokenizer
     return model, tokenizer
 
+def read_json(): 
+    with open('./content.json', encoding='utf-8') as f:
+        data = json.load(f)
+    return data
 
+# for prediction 
 def predict_class(text: str, tokenizer, model): 
     factory = StemmerFactory()
     # stemmer 
