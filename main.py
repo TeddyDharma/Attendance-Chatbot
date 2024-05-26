@@ -6,6 +6,9 @@ import re
 import numpy as np
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 import json
+import mysql.connector
+import pandas as pd
+
 
 def load_model_and_tokenizer(path: str): 
     # load tokenizer
@@ -16,7 +19,44 @@ def load_model_and_tokenizer(path: str):
     # return model and tokenizer
     return model, tokenizer
 
-def read_json(): 
+
+def connect_database(): 
+    try: 
+        mydb = mysql.connector.connect(
+        host = "localhost",
+        user = "root",
+        password = "")
+        if mydb: 
+            print("sucessfully conect to database")
+            return mydb
+        else: 
+            raise ValueError("cant connect to database")
+    except mysql.connector.Error as err: 
+        print(f'errror : {err}')
+        return None
+
+
+def get_data_pegawai(): 
+    mydb = connect_database()
+    cursor = mydb.cursor()
+    cursor.execute("use pkl;")
+    cursor.execute("select * from pegawai;")
+    data_pegawai = cursor.fetchall()
+    return pd.DataFrame(data_pegawai, columns=['id', "name", "email"])
+
+def insert_absensi(id_pegawai : int, date, name, message, attendance_type):
+    mydb = connect_database()
+    cursor = mydb.cursor()
+    cursor.execute("use pkl;")
+    sql = "INSERT INTO absensi (id_pegawai, date, name, message, attendance_type) VALUES (%s, %s, %s, %s, %s)"
+    val = (id_pegawai, date, name, message, attendance_type)
+    cursor.execute(sql, val)
+    mydb.commit() 
+    print("sucesfully insert to database!")
+
+
+
+def read_json():
     with open('./content.json', encoding='utf-8') as f:
         data = json.load(f)
     return data
