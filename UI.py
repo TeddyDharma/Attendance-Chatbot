@@ -34,17 +34,14 @@ def generate_response(prompt_input):
 # User-provided prompt
 if prompt := st.chat_input("ketik pesan mu disini ya, pastikan di pesan yang anda ketik berisikan nama anda"):
     pegawai_name = ""
-
     data_pegawai = get_data_pegawai()
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.write(prompt)
     split_data = str(prompt).lower().split(" ")
-    
     for word in split_data[:-1]: 
         for id,  name in  zip(data_pegawai.loc[:,'id'], data_pegawai.loc[:, 'name']): 
-            if word in str(name).lower(): 
-                print(f'naame : {name} dan word : {word}')
+            if str(word).lower() in str(name).lower(): 
                 pegawai_name = name
                 id_pegawai  = id 
             
